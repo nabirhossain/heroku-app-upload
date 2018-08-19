@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+Create category
+{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+
+{% block profile %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    {% if messages %}
+        <div class="message">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Create category</button>
+    </form>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

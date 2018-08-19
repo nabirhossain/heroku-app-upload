@@ -1,0 +1,6 @@
+{% autoescape off %}
+Hi, {{ user.username }},
+Thanks for your registration in Mr.Django blog
+Please click on the link below to confirm your registration,
+http://{{ domain }} {% url 'blog:activate' uid=uid token=token %}
+{% endautoescape %}

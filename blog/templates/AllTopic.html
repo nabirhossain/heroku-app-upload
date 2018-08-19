@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}
+all topics
+{% endblock %}
+
+{% block stylesheet %}
+<style>
+   .alert-success {
+    margin-top: 160px;
+}
+</style>
+
+{% endblock %}
+
+
+{% block profile %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+        {% if messages %}
+            <div class="message">
+            {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_staff or request.user.is_superuser %}
+            <a href="{% url 'blog:createTopic' %}" class="btn bg-primary pull pull-right">Create new category</a>
+        {% endif %}
+    {% endif %}
+    <table class="table table-bordered">
+        <thead>
+        <tr class="success">
+            <td>Topics</td>
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_staff or request.user.is_superuser %}
+                    <td>Actions</td>
+                {% endif %}
+            {% endif %}
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in topic %}
+        <tr>
+            <td><a href="{% url 'blog:category' name=t.name %}"> {{ t.name }}</a></td>
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_staff or request.user.is_superuser %}
+                    <td>
+                        <a href="" class="btn btn-danger">Delete</a>
+                        <a href="" class="btn btn-success">Edit</a>
+                    </td>
+                {% endif %}
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

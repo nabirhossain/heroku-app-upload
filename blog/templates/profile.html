@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+
+{% endblock %}
+
+{% block stylesheet %}
+<style>
+    .alert {
+    height: 50px;
+    margin-top: 200px;
+}
+</style>
+
+{% endblock %}
+
+
+{% block profile %}
+<div class="fh5co-bio">
+			<figure>
+				<img src="{{ user.auth_image.url }}" alt="Free HTML5 Bootstrap Template" class="img-responsive"><!-- post মডেলে post_author নামে ফরেইন কী এর মধ্যমে author এর  ছবি নিয়ে এসেছি -->
+			</figure>
+			<h1 class="heading">About Me</h1>
+			<h2>{{ user.auth_name }}</h2> <!-- post মডেলে post_author নামে ফরেইন কী এর মধ্যমে author এর নাম নিয়ে এসেছি -->
+            <h4>{{ user.auth_name.email }}</h4><!--  একই রকমভাবে author এর  ইমেইল নিয়ে এসেছি -->
+			<p>{{ user.auth_details }}</p><!--  একই রকমভাবে author এর ডিটেইল নিয়ে এসেছি -->
+			<ul class="fh5co-social">
+				<li><a href="#"><i class="icon-twitter"></i></a></li>
+				<li><a href="#"><i class="icon-facebook"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin"></i></a></li>
+				<li><a href="#"><i class="icon-youtube"></i></a></li>
+			</ul>
+		</div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+        {% if messages %}
+            <div class="message">
+            {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+    <a href="{% url 'blog:create' %}" class="btn bg-primary pull pull-right">Create new post</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="success">
+            <td>Post Title</td>
+            <td>Posted on</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in post1 %}
+        <tr>
+            <td>{{ p.post_title }}</td>
+            <td>{{ p.posted_on }}</td>
+            <td>
+                <a href="{% url 'blog:delete' id=p.id%}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'blog:update' id=p.id%}" class="btn btn-success">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

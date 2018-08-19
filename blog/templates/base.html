@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- Google Fonts -->
+	<!--<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	 Animate -->
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon -->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block stylesheet %}
+
+    {% endblock %}
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<link rel="stylesheet" href="../static/css/animate.css">
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'js/respond.min.js' %}"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=1288611347936727&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- fh5co-offcanvas -->
+	<div id="fh5co-offcanvas">
+		<a href="#" class="fh5co-close-offcanvas js-fh5co-close-offcanvas"><span><i class="icon-cross3"></i> <span>Close</span></span></a>
+		{% block profile %}
+
+        {% endblock %}
+		<div class="fh5co-menu">
+			<div class="fh5co-box">
+				<h3 class="heading">Menu</h3>
+				<ul>
+					<li><a href="#">Mr. Django</a></li>
+                    <li><a href="{% url 'blog:category' %}">Category</a></li>
+					{% if request.user.is_authenticated %}						<!--  ইউজার যদি অথেন্টিকেটেড হয় মানে লগ ইন করা থাকে -->
+					<li><a href="{% url 'blog:profile' %}">Profile</a></li>	<!--  তাহলে  ইউজারের প্রোফাইল দেখাবে এবং url এ  ইউজার প্রোফাইল url সেট করে দিয়েছি -->
+					<li><a href="{% url 'blog:logout' %}">Logout</a></li>	<!--  তাহলে লগ আউট অপশন দেখাবে এবং url এ লগ আউট url সেট করে দিয়েছি -->
+					{% else %}													<!--  আর যদি লগ ইন করা না থাকে -->
+                        <li><a href="{% url 'blog:login' %}">Login</a></li>		<!--  তাহলে লগ ইন অপশন দেখাবে এবং url এ লগ ইন url সেট করে দিয়েছি যা আমাদের লগ ইন পেজে নিয়ে যাবে-->
+					{% endif %}
+				</ul>
+			</div>
+			<div class="fh5co-box">
+				<h3 class="heading">Search</h3>
+				<form action="" method="GET"> <!--   ডাটা নিয়ে আসার জন্য ফরমে GET ম্যাথড ব্যবহার করা হয়েছে -->
+					<div class="form-group">
+						<input type="text" name="q" class="form-control" placeholder="Type a keyword" value="{{ request.GET.q }}">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- END #fh5co-offcanvas -->
+	<header id="fh5co-header">
+
+		<div class="container-fluid">
+
+			<div class="row">
+				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+				<!-- SOCIAL ICON -->
+				<ul class="fh5co-social">
+					<li><a href="#"><i class="icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon-linkedin"></i></a></li>
+				</ul>
+				<!-- END Social icon -->
+				<div class="col-lg-12 col-md-12 text-center">
+					<h1 id="fh5co-logo"><a href="{% url 'blog:index' %}">Mr. Django</a></h1>
+				</div>
+
+			</div>
+
+		</div>
+
+	</header>
+    <div class="container-fluid">
+		<div class="row fh5co-post-entry">
+    {% block content %}
+
+    {% endblock %}
+        </div>
+    </div>
+
+<!-- Footer -->
+	<footer id="fh5co-footer">
+		<p><small>&copy; 2016. Magazine Free HTML5. All Rights Reserverd. <br> Designed by <a href="" target="_blank">FREEHTML5.co</a>  Demo Images: <a href="" target="_blank">Unsplash</a></small></p>
+	</footer>
+<!-- End Footer -->
+
+
+	<!-- jQuery -->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<!-- Main JS -->
+	<script src="{% static 'js/main.js' %}"></script>
+    {% block script %}{% endblock %}
+	</body>
+</html>
