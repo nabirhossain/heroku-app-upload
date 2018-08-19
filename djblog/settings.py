@@ -11,14 +11,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 from django.contrib.messages import constants as messages
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -29,7 +25,7 @@ SECRET_KEY = '9i1&rf*4$-iawwz)aq#7&odl)3)quj(^qja_sj)))3)=iv2gwq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blog18.herokuapp.com']
 
 
 # Application definition
@@ -46,7 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,8 +83,9 @@ DATABASES = {
     }
 }
 
+import dj_database_url
 db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env )
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -127,7 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, "/home/deadpoll/env/DpProject/live-static", "static-root")
 #STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static')
 
 MESSAGE_TAGS = {
@@ -139,10 +139,16 @@ MESSAGE_TAGS = {
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "/home/deadpoll/env/DpProject/live-static/", "media-root/")
+
+
 #GMAIL CONFIGRATIONS
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'nabirhossain13@gmail.com'
-EMAIL_HOST_PASSWORD = '62247622'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
