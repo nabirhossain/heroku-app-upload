@@ -6,17 +6,17 @@
 	<!-- END #fh5co-header -->
 	<!-- -->
     <div class="allpost">
-    {% for p in post1 %} <!--ফর লুপের মাধ্যমে post_list ভেরিয়েবলের সকল পোষ্টকে আমাদের ট্যামপ্লেটে প্রদর্শন করিয়েছি-->
+    {% for p in post1 %}
         <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
             <figure>
                 <a href="{% url 'blog:post_detail' id=p.id %}">
-                    <img src="{{ p.post_image.url }}" alt="Image" class="img-responsive" ><!--  ফর লুপে নেওয়া নতুন ভেরিয়েবল p এর মধ্যে ইমেজ  ফিল্ডের url দিয়েছি -->
+                    <img src="{{ p.post_image.url }}" alt="Image" class="img-responsive" >
                 </a>
             </figure>
-            <span class="fh5co-meta"><a href="{% url 'blog:category' name=p.post_category.name %}">category: {{ p.post_category.name }}</a></span><!--  ফর লুপে নেওয়া নতুন ভেরিয়েবল p এর মধ্যে  ক্যাটাগরি ফিল্ডে  নিয়ে  ক্যাটেগরির নাম দিয়েছি -->
-            <h2 class="fh5co-article-title"><a href="{% url 'blog:post_detail' id=p.id %}">{{ p.post_title }}</a></h2><!--  ফর লুপে নেওয়া নতুন ভেরিয়েবল p এর মধ্যে টাইটেল ফিল্ড নিয়ে এসেছি  -->
+            <span class="fh5co-meta"><a href="{% url 'blog:category' name=p.post_category.name %}">category: {{ p.post_category.name }}</a></span>
+            <h2 class="fh5co-article-title"><a href="{% url 'blog:post_detail' id=p.id %}">{{ p.post_title }}</a></h2>
             <h4><a href="{% url 'blog:author' name=p.post_author %}">{{ p.post_author }}</a> </h4>
-            <span class="fh5co-meta fh5co-date">{{ p.posted_on }}</span><!--  ফর লুপে নেওয়া নতুন ভেরিয়েবল p এর মধ্যে posted_on ফিল্ড  নিয়ে এসেছি  -->
+            <span class="fh5co-meta fh5co-date">{{ p.posted_on }}</span>
         </article>
     {% endfor %}
     <div class="clear-fix"></div>
