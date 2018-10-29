@@ -1,6 +1,6 @@
 # How to upload a Django app on heroku 
 
-1st Step(Python heroku venv(initialize Project)) 
+>1st Step(Python heroku venv(initialize Project)) 
 
 1. Create virtual environment: ```python3 -m venv myenv```
 2. Activate virtual environment: ```source myenv/bin/activate```
@@ -125,3 +125,4 @@ Automatically include all pip in ```requirements.txt``` file:
 ```
 pip freeze > requirements.txt
 ```
+>
