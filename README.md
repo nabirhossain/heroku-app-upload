@@ -1,4 +1,4 @@
-# heroku-app-upload on heroku 
+# How to upload a Django app on heroku 
 
 1st Step(Python heroku venv(initialize Project)) 
 
