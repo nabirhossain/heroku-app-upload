@@ -2,18 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class author(models.Model):
-    auth_name = models.ForeignKey(User, on_delete=models.CASCADE)
-    auth_image = models.FileField()
-    auth_details = models.TextField()
-
-    def __str__(self): #  এডমিনে  আমরা   উক্ত  মডেলের  যে  ফিল্ডটিকে  শো  করাতে  চাই
-        return self.auth_name.username
 
 class category(models.Model):
     name = models.CharField(max_length=100)
 
-    def __str__(self):    #  এডমিনে  আমরা   উক্ত  মডেলের  যে  ফিল্ডটিকে  শো  করাতে  চাই
+    def __str__(self):    
         return self.name
 
 class post(models.Model):
@@ -26,5 +19,5 @@ class post(models.Model):
     posted_on = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True, auto_now_add=False)
 
-    def __str__(self): #  এডমিনে  আমরা   উক্ত  মডেলের  যে  ফিল্ডটিকে  শো  করাতে  চাই
+    def __str__(self): 
         return self.post_title
