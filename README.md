@@ -7,8 +7,9 @@
 3. Install Django: ```pip install django```
 4. Create Django Project: ```django-admin startproject DeployProject```
 5. CD to DeployProject folder: ```cd DeployProject```
+```
   (1)  git init  (2) git add .    (3) git commit -m “initial“ 
-  
+```
 7. Run server: 
 ```python manage.py runserver```
 
