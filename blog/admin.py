@@ -1,13 +1,7 @@
 from django.contrib import admin
-from .models import author, category, post
-# Register your models here.
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ["__str__"]
-    search_fields = ["auth_name"]
+from .models import post, category 
 
-    class Meta:
-        Model = author
-admin.site.register(author, AuthorAdmin)
+# Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ["__str__"]
