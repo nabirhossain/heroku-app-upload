@@ -5,16 +5,16 @@
 {% block stylesheet %}
 {% endblock %}
 
-<!--  Author  এর প্রোফাইল ব্লক ।  যিনি পোষ্ট লিখবেন এখানে তার বিস্তারিত থাকবে -->
+
 {% block profile %}
 <div class="fh5co-bio">
 			<figure>
-				<img src="{{ post1.post_author.auth_image.url }}" alt="Free HTML5 Bootstrap Template" class="img-responsive"><!-- post মডেলে post_author নামে ফরেইন কী এর মধ্যমে author এর  ছবি নিয়ে এসেছি -->
+				<img src="{{ post1.post_author.auth_image.url }}" alt="Free HTML5 Bootstrap Template" class="img-responsive">
 			</figure>
 			<h1 class="heading">About Me</h1>
-			<h2>{{ post1.post_author.auth_name }}</h2> <!-- post মডেলে post_author নামে ফরেইন কী এর মধ্যমে author এর নাম নিয়ে এসেছি -->
-            <h4>{{ post1.post_author.auth_name.email }}</h4><!--  একই রকমভাবে author এর  ইমেইল নিয়ে এসেছি -->
-			<p>{{ post1.post_author.auth_details }}</p><!--  একই রকমভাবে author এর ডিটেইল নিয়ে এসেছি -->
+			<h2>{{ post1.post_author.auth_name }}</h2> 
+            <h4>{{ post1.post_author.auth_name.email }}</h4>
+			<p>{{ post1.post_author.auth_details }}</p>
 			<ul class="fh5co-social">
 				<li><a href="#"><i class="icon-twitter"></i></a></li>
 				<li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -25,13 +25,13 @@
 {% endblock %}
 
 {% block content %}
-	{% if post1.id > first.id %} <!--  যদি  পোষ্ট আইডিটি  যদি প্রথম আইডি থেকে  বড় হয় তবে prev  বাটন  শো করবে -->
-		<a href="{% url 'blog:post_detail' id=post1.id|add:-1 %}" class="fh5co-post-prev"> <!--  এখানে url এ add:-1  দিয়েছি যাতে বর্তমান পোষ্ট আইডি থেকে ১ বিয়োগ করে পেছনের পোষ্ট দেখাবে -->
+	{% if post1.id > first.id %} 
+		<a href="{% url 'blog:post_detail' id=post1.id|add:-1 %}" class="fh5co-post-prev"> 
 			<span><i class="icon-chevron-left"></i> Prev</span>
 		</a>
 	{% endif %}
-	{% if post1.id < last.id %} <!--  আর যদি  পোষ্ট আইডিটি শেষ আইডি থেকে ছোট হয় তবে next  বাটন  শো করবে -->
-		<a href="{% url 'blog:post_detail' id=post1.id|add:1 %}" class="fh5co-post-next"> <!--  এখানে url এ add:1  দিয়েছি যাতে বর্তমান পোষ্ট আইডি থেকে ১ যোগ করে  সামনের পোষ্ট দেখাবে -->
+	{% if post1.id < last.id %}
+		<a href="{% url 'blog:post_detail' id=post1.id|add:1 %}" class="fh5co-post-next"> 
 			<span>Next <i class="icon-chevron-right"></i></span>
 		</a>
 	{% endif %}
@@ -42,15 +42,15 @@
 					<img src="{{ post1.post_image.url }}" alt="Image" class="img-responsive">
 				</figure>
 				<span class="fh5co-meta animate-box">
-					<a href="{% url 'blog:category' name=post1.post_category.name %}">{{ post1.post_category.name }}</a><!-- post মডেলে post_category নামে ফরেইন কী এর মধ্যমে category এর নাম নিয়ে এসেছি -->
+					<a href="{% url 'blog:category' name=post1.post_category.name %}">{{ post1.post_category.name }}</a>
 				</span>
-				<h2 class="fh5co-article-title animate-box">{{ post1.post_title }}</h2><!-- post মডেলে এর post এর  টাইটেল নিয়ে এসেছি -->
-				<span class="fh5co-meta fh5co-date animate-box">{{ post1.posted_on }}</span><!-- post মডেলে এর post এর টাইম নিয়ে এসেছি -->
+				<h2 class="fh5co-article-title animate-box">{{ post1.post_title }}</h2>
+				<span class="fh5co-meta fh5co-date animate-box">{{ post1.posted_on }}</span>
 
 				<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
 					<div class="row">
 						<div class="col-lg-12 cp-r animate-box">
-                            <p style="text-align: justify">{{ post1.post_body }}</p><!-- post মডেলে এর post এর  পুরো বডি  মানে  পোস্টের  বিস্তারিত নিয়ে এসেছি -->
+                            <p style="text-align: justify">{{ post1.post_body }}</p>
 						</div>
 
 					</div>
